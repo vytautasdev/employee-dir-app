@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/showMyLoginPage")
+                .loginPage("/signIn")
                 .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
                 .and()
