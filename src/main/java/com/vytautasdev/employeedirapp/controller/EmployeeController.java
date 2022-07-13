@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -89,16 +90,16 @@ public class EmployeeController {
      * TODO: WHY search functionality work on localhost server but not on Azure????
      */
     @GetMapping("/search")
-    public String search(@RequestParam("employeeName") String name, Model model) {
+    public String delete(@RequestParam("employeeName") String name,
+                         Model model) {
 
-        // search employee by firstName, lastName
-        List<Employee> employeeList = employeeService.searchBy(name);
+        // delete the employee
+        List<Employee> theEmployees = employeeService.searchBy(name);
 
         // add to the spring model
-        model.addAttribute("employees", employeeList);
+        model.addAttribute("employees", theEmployees);
 
         // send to /employees/list
         return "/employees/list-employees";
-
     }
 }
