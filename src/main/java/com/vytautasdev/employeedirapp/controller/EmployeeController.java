@@ -86,18 +86,15 @@ public class EmployeeController {
     }
 
 
-    /**
-     * TODO: WHY search functionality work on localhost server but not on Azure????
-     */
     @GetMapping("/search")
-    public String delete(@RequestParam("employeeName") String name,
+    public String search(@RequestParam("employeeName") String name,
                          Model model) {
 
-        // delete the employee
-        List<Employee> theEmployees = employeeService.searchBy(name);
+        // search employee by name
+        List<Employee> employee = employeeService.searchBy(name);
 
         // add to the spring model
-        model.addAttribute("employees", theEmployees);
+        model.addAttribute("employees", employee);
 
         // send to /employees/list
         return "/employees/list-employees";

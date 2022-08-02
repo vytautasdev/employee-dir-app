@@ -53,7 +53,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> results = null;
 
         if (name != null && (name.trim().length() > 0)) {
-            results = employeeRepository.findByFirstNameContainsOrLastNameContainsAllIgnoreCase(name, name);
+//            results = employeeRepository.findByFirstNameContainsOrLastNameContainsAllIgnoreCase(name, name);
+            results = employeeRepository.findByLastNameContainsAllIgnoreCase(name);
         }
         else {
             results = findAll();
@@ -62,3 +63,5 @@ public class EmployeeServiceImpl implements EmployeeService {
         return results;
     }
 }
+
+
